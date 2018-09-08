@@ -1,4 +1,4 @@
-  var socket = io();
+   var socket = io();
 
             var temp_broken = "n/a";
             socket.on('message', function (msg) {
