@@ -26,7 +26,7 @@ var gpio21 = gpio.export(21, {
 
 //for testing, we're just going to send data to the client every second
 setInterval(function() {
-  //
+  //Set up yours device ID ..
 //ID of first temp sensor
   var temp1;
   temp1 = sensor.temperatureSync("28-031722c313ff", { parser: "hex" });
@@ -49,4 +49,3 @@ var soil_status = gpio21.value;
   console.log(soil_output);
   io.emit("message", { temp1, temp2, soil_output });
 }, 1000);
-
