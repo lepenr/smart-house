@@ -28,25 +28,32 @@ var gpio21 = gpio.export(21, {
 setInterval(function() {
   //
 //ID of first temp sensor
+
+
   var temp1;
   temp1 = sensor.temperatureSync("28-031722c313ff", { parser: "hex" });
 //ID of second temp sensor
-  var temp2 = sensor.temperatureSync("28-031722cedeff", { parser: "hex" });
+  var temp2 ='1'// sensor.temperatureSync("28-020291770921", { parser: "hex" });
+var temp3 = sensor.temperatureSync("28-02184028f2ff", { parser: "hex" });
 var soil_status = gpio21.value;
 
+//28-031722cedeff
+//28-031722c313ff
+//28-031722cedeff
 
-  console.log(temp1);
-  console.log(temp2);
-  console.log(gpio21.value);
+//  console.log(temp1);
+ // console.log(temp2);
+console.log(temp3);
+ // console.log(gpio21.value);
 
   var soil_output;
-  if (soil_status == 1) {
+  if (soil_status == 0) {
     soil_output = "Dry";
   } else {
-    soil_output = "Wet";
+    soil_output = "OK";
   }
 
   console.log(soil_output);
-  io.emit("message", { temp1, temp2, soil_output });
-}, 1000);
+  io.emit("message", { temp1, temp2, temp3, soil_output });
+}, 100);
 
